@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-
-
-#'''Implementation and  Demostration of Dynamic Time Warping
-#Requires : python 2.7.x, Numpy 1.7.1, Matplotlib, 1.2.1'''
-
 import math
 import numpy as np
 import sys
@@ -34,15 +28,16 @@ def DTW(A, B, window = sys.maxint, d = lambda x,y: abs(x-y)):
     while (m, n) != (0, 0):
         path.append((m, n))
         m, n = min((m - 1, n), (m, n - 1), (m - 1, n - 1), key = lambda x: cost[x[0], x[1]])
-    
+
     path.append((0,0))
     return cost[-1, -1], path
 
-def main():
+
+def dtw_show():
     A, B = np.array([1,2,3,4,2,3,2]), np.array([1,1,3,3,4,3,3,3])
     C = np.array([7,8,5,9,11,9,10])
     B = C
-    cost, path = DTW(A, B, window = 3)
+    cost, path = DTW(A, B, window = 4)
     print 'Total Distance is ', cost
     import matplotlib.pyplot as plt
     offset = 0
@@ -53,5 +48,9 @@ def main():
         plt.plot([x1, x2], [A[x1], B[x2] + offset])
     plt.show()
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+#    main()
+
+
+
+

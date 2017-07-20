@@ -87,6 +87,18 @@ def run():
     cicles_req= int (conf.get('Container', 'cicles_req'))
     load_balancing_algorithm=int(conf.get('Container','load_balancing_algoritm'))
     
+    print ("Load Balancing Algorithm: %d" % load_balancing_algorithm )
+    print ("Min Cells running: %d" % minimun_cells)
+    print ("")
+    print ("")
+    print ("        D           s            S           X ")    
+    print (" 0 <--------> 50 <------> 60 <------> 80 <--------> 100")
+    print ("       10%          10%        20%          60% ")
+    print ("")
+    print ("")
+
+
+
     
     #Initialize seed containers 
     for x in range(0,minimun_cells):
@@ -365,6 +377,10 @@ def run():
         #plt.savefig('./plot.png')
        # os.system('./plot.png')
         plt.show()
+        import dtw
+        dtw.dtw_show()
+         
+       
 
 
 
