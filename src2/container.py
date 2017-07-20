@@ -1,12 +1,12 @@
 
 from cell import cell
-from _overlapped import NULL
+#from _overlapped import NULL
 import configparser
 
 class container:
     
     total_cicles_request=0
-    cell=NULL
+    cell=""
     container_cicles_capacity=0
     internal_code=0
     cpu_used=0

@@ -1,10 +1,16 @@
 #!/usr/bin/env python
 
+#import matplotlib
+#matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.mlab import detrend_linear
+
 from container import container
 #import time
 import configparser
 import io
+#import os
+
 
 
 #from numpy import *
@@ -207,7 +213,7 @@ def run():
     for lines in results_list:
         for item in lines:
             myfile.write(u''+str(item)+" ")
-        myfile.write("\n")
+        myfile.write(u"\n")
     myfile.close
         
         
@@ -266,7 +272,7 @@ def run():
     for i in QueueLength:
         suma=suma+i
     #print (suma/len(QueueLength))
-    myfileresultado.write(";" + str(int(suma)/len(QueueLength)))
+    myfileresultado.write(u";" + str(int(suma)/len(QueueLength)))
     
     
     
@@ -316,16 +322,18 @@ def run():
         plt.bar([p for p in time_serie], S_serie,width=0.9,color='y',align='center')
     
    
+        #plt.savefig('./plot.png')
+       # os.system('./plot.png')
         plt.show()
         
         
 if single_execution  :
     #version solo una ejecucion
-    myfileresultado = open('resultadocorto.txt', mode='a', encoding='utf-8')
+    myfileresultado = io.open('resultadocorto.txt', mode='a', encoding='utf-8')
     run()
 else:    
     #version multiple ejecucion
-    myfileresultado = open('resultadogrande.txt', mode='a', encoding='utf-8')
+    myfileresultado = io.open('resultadogrande.txt', mode='a', encoding='utf-8')
     cont=0
     for VarDead in range(5,100,10):
         for VarDeadProvability in range(5,100,10):
@@ -334,8 +342,8 @@ else:
                     cont+=1
                    
                
-                    myfileconf = open('cell.cfg', mode='wt', encoding='utf-8')
-                    myfileconf.write('[Cell] \n' +
+                    myfileconf = io.open('cell.cfg', mode='wt', encoding='utf-8')
+                    myfileconf.write(u'[Cell] \n' +
                     'deadprovability = ' + str(VarDeadProvability) + ' \n' +
                     'dead_cpu_use = ' + str(VarDead) +' \n'+
                     'moveprovability = 10 \n'+

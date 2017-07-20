@@ -128,8 +128,8 @@ class cell:
     
     def actuate(self):
         
-        if (self.queue>0):
-            print ("Queue:" , self.queue, "processing:",self.cpu_use)
+        #if (self.queue>0):
+        #    print ("Queue:" , self.queue, "processing:",self.cpu_use)
         
         
         self.action='N'
