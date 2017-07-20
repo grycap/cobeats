@@ -1,0 +1,1 @@
+./run.py ./cell.cfg
