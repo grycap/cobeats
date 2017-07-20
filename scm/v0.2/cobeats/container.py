@@ -17,15 +17,16 @@ class container:
     min_processing_cicle_capacity=0
     
     
-    def __init__(self,code,min_running):
+    def __init__(self,code,min_running,cellconfigfile):
         
         self.conf = configparser.ConfigParser()
-        self.conf.readfp(open(r'cell.cfg'))
+        #self.conf.readfp(open(r'../conf/cell.cfg'))
+        self.conf.readfp(open(cellconfigfile))
         self.cicles_req= int (self.conf.get('Container', 'cicles_req'))
         
         
         self.total_cicles_request=0
-        self.cell=cell(code,min_running)
+        self.cell=cell(code,min_running,cellconfigfile)
         self.container_cicles_capacity= int (self.conf.get('Container', 'init_container_cicles_capacity'))
         self.internal_code=code
         

@@ -27,8 +27,12 @@ import sys
 #import time
 
 single_execution=True
-cell_conf_file="cell.cfg"
-file_name="system_status.csv"
+#cell_conf_file="cell.cfg"
+cell_conf_file=""
+#file_name="system_status.csv"
+file_name=""
+#myfileresultado=""
+version="v0.2"
 
 container_list=list()
 
@@ -40,13 +44,22 @@ def get_total_processing_capacity():
 
 def run():
  
-    print ("hola %d" % len(sys.argv)) 
+    #gprint ("hola %d" % len(sys.argv)) 
+    print ("")
+    print ("=================================================================")
+    print ("---------------------  COBEATS " + version + " -----------------------------" )
+    print ("------  COntainers Bio-inspired Enhanced AuToscaling System -----")
+    print ("=================================================================")
+    print ("")
+
     print ("Total Parameters: %d " % len(sys.argv))
-    print ("Parameters List : ",  sys.argv)
-    if (len(sys.argv) < 2):    
+    #print ("Parameters List : ",  sys.argv)
+    if (len(sys.argv) < 3):    
         print ("Run :" , sys.argv); 
         quit()    
     
+    print ("Load file       : %s " % sys.argv[2])
+    file_name=sys.argv[2]
     print ("Config file     : %s " % sys.argv[1])
     cell_conf_file=sys.argv[1]
    # myfile=Path(cell_conf_file)
@@ -78,7 +91,7 @@ def run():
     #Initialize seed containers 
     for x in range(0,minimun_cells):
         container_count+=1
-        m=container(container_count,minimun_cells)
+        m=container(container_count,minimun_cells,cell_conf_file)
         container_list.append(m)
         
     
@@ -161,7 +174,7 @@ def run():
             
             #if (acti == 'X'):
             if (acti.count('X')>0):
-                n_container=container(container_count,minimun_cells)
+                n_container=container(container_count,minimun_cells,cell_conf_file)
                 container_count=container_count+1
                 container_list.append(n_container)
                 total_x+=1
@@ -236,7 +249,7 @@ def run():
         
     
     #Save single result in a file    
-    myfile = io.open('resultado.txt', mode='wt', encoding='utf-8')
+    myfile = io.open('../iofiles/resultado.txt', mode='wt', encoding='utf-8')
     for lines in results_list:
         for item in lines:
             myfile.write(u''+str(item)+" ")
@@ -352,50 +365,54 @@ def run():
         #plt.savefig('./plot.png')
        # os.system('./plot.png')
         plt.show()
+
+
+
+if __name__ == '__main__':
         
-        
-if single_execution  :
-    #version solo una ejecucion
-    myfileresultado = io.open('resultadocorto.txt', mode='a', encoding='utf-8')
-    run()
-else:    
-    #version multiple ejecucion
-    myfileresultado = io.open('resultadogrande.txt', mode='a', encoding='utf-8')
-    cont=0
-    for VarDead in range(5,100,10):
-        for VarDeadProvability in range(5,100,10):
-            for VarCreate in range(VarDead,100,10):
-                for VarCreateProvability in range(5,100,10):
-                    cont+=1
+#def main():        
+    if single_execution  :
+        #version solo una ejecucion
+        myfileresultado = io.open('../iofiles/resultadocorto.txt', mode='a', encoding='utf-8')
+        run()
+    else:    
+        #version multiple ejecucion
+        myfileresultado = io.open('../iofiles/resultadogrande.txt', mode='a', encoding='utf-8')
+        cont=0
+        for VarDead in range(5,100,10):
+            for VarDeadProvability in range(5,100,10):
+                for VarCreate in range(VarDead,100,10):
+                    for VarCreateProvability in range(5,100,10):
+                        cont+=1
                    
                
-                    myfileconf = io.open('cell.cfg', mode='wt', encoding='utf-8')
-                    myfileconf.write(u'[Cell] \n' +
-                    'deadprovability = ' + str(VarDeadProvability) + ' \n' +
-                    'dead_cpu_use = ' + str(VarDead) +' \n'+
-                    'moveprovability = 10 \n'+
-                    'vscaprovability = 0 \n'+
-                    'duplprovability = '+ str(VarCreateProvability) +' \n'+
-                    'dupl_cpu_use = ' + str(VarCreate) +' \n'+
-                    'init_process_capacity=1000 \n'+
-                    'variation_process_capacity=25 \n'+
-                    'max_history=30 \n'+
-                    '[Simulation] \n'+
-                    'minimun_cells_running = 2 \n' +
-                    '[Container] \n'+
-                    'cicles_req=100 \n'+
-                    'init_container_cicles_capacity=1000 \n'+
-                    'max_scale_limit=4000 \n'+
-                    'min_scale_limit=500 \n'+
-                    #'minimun_cells_running=2 \n ' +
+                        myfileconf = io.open('cell.cfg', mode='wt', encoding='utf-8')
+                        myfileconf.write(u'[Cell] \n' +
+                        'deadprovability = ' + str(VarDeadProvability) + ' \n' +
+                        'dead_cpu_use = ' + str(VarDead) +' \n'+
+                        'moveprovability = 10 \n'+
+                        'vscaprovability = 0 \n'+
+                        'duplprovability = '+ str(VarCreateProvability) +' \n'+
+                        'dupl_cpu_use = ' + str(VarCreate) +' \n'+
+                        'init_process_capacity=1000 \n'+
+                        'variation_process_capacity=25 \n'+
+                        'max_history=30 \n'+
+                        '[Simulation] \n'+
+                        'minimun_cells_running = 2 \n' +
+                        '[Container] \n'+
+                        'cicles_req=100 \n'+
+                        'init_container_cicles_capacity=1000 \n'+
+                        'max_scale_limit=4000 \n'+
+                        'min_scale_limit=500 \n'+
+                        #'minimun_cells_running=2 \n ' +
 
-                    '\n')
+                        '\n')
                     
-                    myfileconf.close()
+                        myfileconf.close()
             
                     
-                    print (cont, "-" ,VarDead, "-" , VarDeadProvability)
-                    myfileresultado.write(str(VarDead)               +';' 
+                        print (cont, "-" ,VarDead, "-" , VarDeadProvability)
+                        myfileresultado.write(str(VarDead)               +';' 
                                         + str(VarDeadProvability)    +';'
                                         + str(VarCreate)             +';' 
                                         + str(VarCreateProvability)  +';' )
@@ -403,10 +420,13 @@ else:
                     
                     
                     
-                    myfileresultado.flush()
-                    run()
-                    myfileresultado.write('\n')
+                        myfileresultado.flush()
+                        run()
+                        myfileresultado.write('\n')
             
-    myfileresultado.close()
+        myfileresultado.close()
+
+
 
  
+#main()

@@ -47,7 +47,7 @@ class cell:
     
     
     
-    def __init__(self, code, min_running):
+    def __init__(self, code, min_running,configfile):
         # Initialize cell
      
         self.internal_code=code
@@ -56,7 +56,7 @@ class cell:
         #logging.debug("Initialize", self.internal_code)
         #config = ConfigParser.ConfigParser()
         config = configparser.ConfigParser()
-        config.readfp(open(r'cell.cfg'))
+        config.readfp(open(configfile))
         #param1 = config.get('Cell', 'param1')
         #self.minimal_running = int (config.get('Cell', 'minimal_number_running'))
         self.minimal_running = min_running
