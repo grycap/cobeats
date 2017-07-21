@@ -33,17 +33,20 @@ def DTW(A, B, window = sys.maxint, d = lambda x,y: abs(x-y)):
     return cost[-1, -1], path
 
 
-def dtw_show():
+def dtw_show(ts,pcs):
     A, B = np.array([1,2,3,4,2,3,2]), np.array([1,1,3,3,4,3,3,3])
     C = np.array([7,8,5,9,11,9,10])
     B = C
+    A=ts
+    B=pcs
     cost, path = DTW(A, B, window = 4)
     print 'Total Distance is ', cost
     import matplotlib.pyplot as plt
     offset = 0
     plt.xlim([-1, max(len(A), len(B)) + 1])
     plt.plot(A)
-    plt.plot(B + offset)
+    plt.plot(B)
+    #plt.plot(B + offset)
     for (x1, x2) in path:
         plt.plot([x1, x2], [A[x1], B[x2] + offset])
     plt.show()

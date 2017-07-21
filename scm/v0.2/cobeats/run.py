@@ -52,15 +52,17 @@ def run():
     print ("=================================================================")
     print ("")
 
-    print ("Total Parameters: %d " % len(sys.argv))
+    print ("Total Parameters        : %d " % len(sys.argv))
     #print ("Parameters List : ",  sys.argv)
-    if (len(sys.argv) < 3):    
+    if (len(sys.argv) < 4):    
         print ("Run :" , sys.argv); 
         quit()    
     
-    print ("Load file       : %s " % sys.argv[2])
+    print ("Load file               : %s " % sys.argv[2])
     file_name=sys.argv[2]
-    print ("Config file     : %s " % sys.argv[1])
+    print ("Output file             : %s " % sys.argv[3])
+    file_output_name=sys.argv[3]
+    print ("Config file             : %s " % sys.argv[1])
     cell_conf_file=sys.argv[1]
    # myfile=Path(cell_conf_file)
    # if not(myfile.exist()):
@@ -87,13 +89,23 @@ def run():
     cicles_req= int (conf.get('Container', 'cicles_req'))
     load_balancing_algorithm=int(conf.get('Container','load_balancing_algoritm'))
     
-    print ("Load Balancing Algorithm: %d" % load_balancing_algorithm )
-    print ("Min Cells running: %d" % minimun_cells)
+    print ("Load Balancing Algorithm: %d (1-Equal, 2-less Used , 3-Processing Capacity) " % load_balancing_algorithm )
+    print ("Min Cells running       : %d" % minimun_cells)
+
+    pdead_value = int (conf.get('Cell', 'deadprovability'))
+    dead_cpu_use_value = int (conf.get('Cell', 'dead_cpu_use'))
+    pdupl_value = int (conf.get('Cell', 'duplprovability'))
+    dupl_cpu_use_value = int (conf.get('Cell', 'dupl_cpu_use'))
+    #pmove = int (config.get('Cell', 'moveprovability'))
+    pscav_value = int (conf.get('Cell', 'vscaprovability'))
+
+
+
     print ("")
     print ("")
-    print ("        D           s            S           X ")    
-    print (" 0 <--------> 50 <------> 60 <------> 80 <--------> 100")
-    print ("       10%          10%        20%          60% ")
+    print ("        D           s      S           X ")    
+    print (" 0 <--------> %d <------------> %d <--------> 100" % (dead_cpu_use_value, dupl_cpu_use_value))
+    print ("       %d              %d              %d " % (pdead_value, pscav_value, pdupl_value))
     print ("")
     print ("")
 
@@ -261,7 +273,8 @@ def run():
         
     
     #Save single result in a file    
-    myfile = io.open('../iofiles/resultado.txt', mode='wt', encoding='utf-8')
+    #myfile = io.open('../iofiles/resultado.txt', mode='wt', encoding='utf-8')
+    myfile = io.open(file_output_name, mode='wt', encoding='utf-8')
     for lines in results_list:
         for item in lines:
             myfile.write(u''+str(item)+" ")
@@ -378,7 +391,7 @@ def run():
        # os.system('./plot.png')
         plt.show()
         import dtw
-        dtw.dtw_show()
+        dtw.dtw_show(request_serie,ProcessingCapacity_serie)
          
        
 
