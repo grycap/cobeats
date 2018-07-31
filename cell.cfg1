@@ -1,5 +1,5 @@
 [Cell] 
-deadprovability = 5 
+ deadprovability = 5 
  dead_cpu_use = 5 
  moveprovability = 10 
  vscaprovability = 0 
@@ -7,11 +7,11 @@ deadprovability = 5
  dupl_cpu_use = 5 
  init_process_capacity=1000 
  variation_process_capacity=25 
- [Container] 
+[Container] 
  cicles_req=100 
  init_container_cicles_capacity=1000 
  max_scale_limit=4000 
  min_scale_limit=500 
- [Simulation] 
+[Simulation] 
  minimun_cells_running=2 
  

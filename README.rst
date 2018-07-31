@@ -9,7 +9,7 @@ Cobeats is a software to test the proposoal of use bio-inspired cells in autosca
 Installation and use
 --------------------
 
-To run this code only is necesary copy software from this repository to running machine. It was executed in Python version XXXXX. No others versions are tested.
+To run this code only is necesary copy software from this repository to running machine. It was executed in Python 3.5.2. No others versions are tested.
 
 
 
