@@ -3,3 +3,6 @@
 
 
 Cobeats is a software to test
+
+Installation
+------------
