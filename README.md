@@ -24,7 +24,7 @@ For basic execution run ./bin/run_compare.sh with options. Fires is algorithm us
 
 Using help in ./run_compare shell, you can see all options
 ```
-./run_compare.sh opcion Load
+./run_compare.sh Option Load
 option: 
  C - Conventional
  B - Bioinspired
@@ -43,16 +43,15 @@ Configuration
 -------------
 Multiple file are added in this version to run all test. Configuration file for a simulation can use next parameters in seccions:
 
-[Cell] Section. This section contain information about cell behaviour
+*[Cell] Section. This section contain information about cell behaviour
+*deadprovability 
+*dead_cpu_use
 
-deadprovability
-dead_cpu_use
+*moveprovability
+*vscaprovability
 
-moveprovability
-vscaprovability
-
-duplprovability
-dupl_cpu_use
+*duplprovability
+*dupl_cpu_use
 
 init_process_capacity
 variation_process_capacity
