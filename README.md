@@ -42,7 +42,7 @@ For example, executing ./run_compare.sh B 1  is posible run ia Bio-inspired algo
 ## Configuration
 Multiple file are added in this version to run all test. Configuration file for a simulation can use next parameters in seccions:
 
-* [Cell] Section. This section contain information about cell behaviour.
+**[Cell]** Section. This section contain information about cell behaviour.
 * deadprobability - Dead probability for algorithm limits.
 * dead_cpu_use - Limit for dead resource use.
 * moveprobability - Not used
@@ -54,10 +54,10 @@ Multiple file are added in this version to run all test. Configuration file for 
 * max_history - Not used
 * X_total_containers - Total containers created for X actions
 
-[Simulation] Section for simulation
+**[Simulation]** Section for simulation
 * minimun_cells_running - Mininum running cells
 
-[Container] Container part for simulation
+**[Container]** Container part for simulation
 * cicles_req - NOt operative
 * slot_time - Not operative
 * init_container_cicles_capacity - Not operative
@@ -101,7 +101,8 @@ icm_local_part=10
 
 ## Authors
 
-* **Jose Herrera** - *Initial work*
+* **J Herrera** - *Initial work* - jherrera@upv.es
+* **G Molto**
 
 ## Licence
 
