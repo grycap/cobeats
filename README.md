@@ -24,15 +24,15 @@ For basic execution run ./bin/run_compare.sh with options. Fires is algorithm us
 
 Using help in ./run_compare shell, you can see all options
 ```
-run_compare.sh opcion Load
+./run_compare.sh opcion Load
 option: 
-- C - Conventional
-- B - Bioinspired
-- P - Prediction
+ C - Conventional
+ B - Bioinspired
+ P - Prediction
 Load: 
-- 1 - Sintetic load
-- 2 - FIFA load
-- 3 - NASA load
+ 1 - Sintetic load
+ 2 - FIFA load
+ 3 - NASA load
 ```
 
 For example ./run_compare.sh B 1   for run Bio-inspared algorithm with Sintetic load.
@@ -83,14 +83,34 @@ icm_size
 icm_neighbourhood_part
 icm_local_part
 
+a simple example
+```
+dprovability = 80
+dead_cpu_use = 30
+moveprovability = 10
+vscaprovability = 80
+duplprovability = 80
+dupl_cpu_use = 90
+init_process_capacity=1000
+variation_process_capacity=25
+max_history=30
+X_total_containers=1
 
+[Simulation]
+minimun_cells_running = 5
+prediction=0
 
-
-
-
-
-
-
-
+[Container]
+cicles_req=1000000
+slot_time=5000
+init_container_cicles_capacity=200000
+max_scale_limit=1000000000000
+min_scale_limit=500
+load_balancing_algoritm=2
+icm_simulation=0
+icm_size=20
+icm_neibourhood_part=90
+icm_local_part=10
+```
 
 
