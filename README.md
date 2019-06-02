@@ -17,6 +17,7 @@ Some python libreries are necesary to run Cobeats.
 * statsmodels 0.9.0
 * sklearn 0.19.2
 
+It is included all information about loads needed for simulation.
 
 ## Basic execution example
 
