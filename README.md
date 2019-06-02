@@ -1,16 +1,14 @@
-# Project Title
+# Cobeats
 
-.. Cobeats ()
-=====================================
-=======
-Cobeats
-=======
+Cobeats (COntainers Bio-inspired Enhanced AuToscaling System) is a software to test the proposoal of use bio-inspired cells in autoscaling systems based in software containers. 
+
+## Getting Started
+
 -------------------------------
 A cell based autoscaling system
 -------------------------------
 
 
-Cobeats (COntainers Bio-inspired Enhanced AuToscaling System) is a software to test the proposoal of use bio-inspired cells in autoscaling systems based in software containers. 
 
 Installation and use
 --------------------
