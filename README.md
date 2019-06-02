@@ -4,21 +4,13 @@ Cobeats (COntainers Bio-inspired Enhanced AuToscaling System) is a software to t
 
 ## Getting Started
 
--------------------------------
-A cell based autoscaling system
--------------------------------
 
 
-
-Installation and use
---------------------
-
+## Instalation and use
 To run this code only is necesary copy software from this repository to running machine. It was executed in Python 3.5.2. No others versions are tested.
 
 
-
-Basic execution example
------------------------
+## Basic execution example
 
 For basic execution run ./bin/run_compare.sh with options. Fires is algorithm used and second is load type
 
@@ -38,9 +30,7 @@ Load:
 For example ./run_compare.sh B 1   for run Bio-inspared algorithm with Sintetic load.
 
 
-
-Configuration
--------------
+## Configuration
 Multiple file are added in this version to run all test. Configuration file for a simulation can use next parameters in seccions:
 
 *[Cell] Section. This section contain information about cell behaviour
