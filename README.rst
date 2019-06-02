@@ -25,13 +25,13 @@ For basic execution run ./bin/run_compare.sh with options. Fires is algorithm us
 Using help in ./run_compare shell, you can see all options
 run_compare.sh opcion Load
 option: 
-C - Conventional
-B - Bioinspired
-P - Prediction
+- C - Conventional
+- B - Bioinspired
+- P - Prediction
 Load: 
-1 - Sintetic load
-2 - FIFA load
-3 - NASA load
+- 1 - Sintetic load
+- 2 - FIFA load
+- 3 - NASA load
 
 For example ./run_compare.sh B 1   for run Bio-inspared algorithm with Sintetic load.
 
