@@ -99,11 +99,11 @@ icm_neibourhood_part=90
 icm_local_part=10
 ```
 
-##Authors
+## Authors
 
 * **Jose Herrera** - *Initial work*
 
-##Licence
+## Licence
 
 This project is licensed under the Apache LIcense - see the [LICENCE] (LICENCE) file for details.
 
