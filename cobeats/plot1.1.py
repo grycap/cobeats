@@ -12,12 +12,6 @@ import numpy as np
 #from sklearn.metrics import mean_squared_error
 from sklearn import metrics
 
-'''
-def mae(pred_list, true_list):
-    if len(pred_list) != len(true_list):
-        raise Exception('Error: number of elements not match!')
-    return sum(map(lambda t:float(t[0]-t[1]),zip(pred_list, true_list)))/len(true_list)
-'''
 
 def rmse(predictions, targets):
     differences = predictions - targets                       #the DIFFERENCEs.
@@ -51,19 +45,8 @@ print ("Show images                             : %s" % show_images)
 with open(file_name) as f:
         
 	reader=csv.reader(f,delimiter=' ',quoting=csv.QUOTE_NONE)
-    #time_serie=list()
-    #request_serie=list()
 	list_csv=list(reader)
 	print ("Total lines readed                      : %d " %(len(list_csv) ))
-    #for row in reader:
-        #print row[2]
-        #time_serie.append(row[0])
-        #request_serie.append(row[1])
-
-
-#print (a)
-
-#Remove virt line
 list_csv.pop(0)
 
 time_serie=[x[0] for x in list_csv]
@@ -90,11 +73,9 @@ for i in totalContainer_serie:
 
 sum_q=0.0
 for i in QueueLength:
-    #sum_q+=int(i)
 	sum_q+=float(i)
   
 
-#print (time_serie)
 
 if show_images==1:
 	plt.figure(1)
@@ -102,48 +83,27 @@ if show_images==1:
 	plt.subplot(211)
 	AAA=[float(p) for p in request_serie]
 	TTT=[float(p) for p in time_serie]
-	#plt.plot(time_serie,request_serie)
 	plt.plot(TTT,AAA)
 	plt.legend(['Requests'])
 	plt.xlabel('Time --->')
 	plt.ylabel('FLOPS requested --->')
 	plt.subplot(212)
 	BBB=[float(p) for p in totalContainer_serie]
-	#plt.plot(time_serie,totalContainer_serie)
 	plt.plot(TTT,BBB)
 	plt.xlabel('Time --->')
 	plt.ylabel('#Containers or Decisions --->')
-	#plt.plot(time_serie,X_serie)
-	#plt.plot(time_serie,D_serie)
-	#plt.plot(time_serie,s_serie)
-	#plt.plot(time_serie,S_serie)
-	#SXX=[float(p) for p in X_serie]
-	#SDD=[float(p) for p in D_serie]
-	#Sss=[float(p) for p in s_serie]
-	#SSS=[float(p) for p in S_serie]
-	#plt.plot(TTT,SXX)
-#	plt.plot(TTT,SDD)
-#	plt.plot(TTT,Sss)
-#	plt.plot(TTT,SSS)
 	plt.legend(['Containers','X Dec.','D Dec.','s Dec.','S Dec.'])
-#	plt.show()
 	plt.figure(3)
-     #plt.bar(time_serie, X_serie ,width=0.9,color='b',align='center')
 	plt.xlabel('Time --->')
 	plt.ylabel('# Decisions --->')
 	XS=[float(p) for p in X_serie]
 	DS=[float(p) for p in D_serie]
 	sS=[float(p) for p in s_serie]
 	SS=[float(p) for p in S_serie]
-	#plt.bar([float(p) for p in time_serie], X_serie ,width=0.9,color='b',align='center')
 	w=0.25
 	ind = np.arange(len(TTT))
 	plt.bar(ind-w*2,XS,width=w,color='b',align='center')
 	plt.bar(ind-w,DS,width=w,color='r',align='center')
-	#plt.bar(TTT,DS,width=w,color='g',align='center',stacked=False)
-	#plt.bar(TTT,sS,width=w,color='r',align='center',stacked=False)
-	#plt.bar(TTT,SS,width=0.9,color='y',align='center')
-	#plt.bar(TTT,DS,width=0.9,color='g',align='center')
 	plt.bar(ind+w,sS,width=w,color='g',align='center')
 	plt.bar(ind+w*2,SS,width=w,color='y',align='center')
 	plt.legend(['X Dec.','D Dec.', 's Dec.', 'S Dec.'])
@@ -191,41 +151,23 @@ if show_images==1:
 '''
 
 
-#type(request_serie)
-#A = request_serie.astype(np.float)
-#A = np.array(request_serie, dtype=np.float16)
-#B = np.array(ProcessingCapacity_serie, dtype=np.float16)
 A=[float(p) for p in request_serie]
 B=[float(p) for p in ProcessingCapacity_serie]
 cost, path = DTW(A, B, window = 4)
 temp=cost/(len(list_csv))
-#print 'Total Distance is              :', cost,' (',cost/1000000,' MFLOPS) - (', cost/1000000000, 'GFLOPS)'
 print ('Total DTW Distance is                   : %f ( %f MFLOPS)(  %f GFLOPS)'% (cost,cost/1000000,cost/1000000))
-#print 'Mean Distance                  :', temp,' (',temp/1000000 ,' MFLOPS) - (', temp/1000000000, ' GFLOPS)'
 print ('Mean DTW Distance                       : %f ( %f MFLOPS) - ( %f GFLOPS)' %(temp,temp/1000000,temp/1000000000))
 print ('Sum Total Processing Containers in sim  : %f' %( sum_total_containers))
 temp=cost/sum_total_containers
-#print 'Mean Distance total/Container  :', temp, ' (', temp /1000000 ,' MFLOPS) -(', temp /1000000000 , ' GFLOPS)'
 print ('Mean Distance total/Container           : %f (%f MFLOPS) (%f GFLOPS)' % (temp, temp/1000000,temp/1000000000))
-#print ('Mean Distance total/Container  : %d  ( %d MFLOPS) -( %d GFLOPS)' %(f,f/1000000,f/1000000000))
-#print ('Distancia %d' % temp)
-#aux=f
-#print ('Mean Distance total/Container  : %f  ( %f MFLOPS) -( %f GFLOPS)' %(tempaux,aux/1000000,aux/1000000000))
-#print 'Total Queue                    :', sum_q,' (', sum_q/1000000 ,' MFLOPS) -(', sum_q/1000000000 , ' GFLOPS)'
-#print 'Total Queue                    :','{:15.2f}'.format(round(sum_q,3)),' (', sum_q/1000000  ,'  MFLOPS) -(',sum_q/1000000000, ' GFLOPS)'
 print ('Total Queue                             : %d (%f MFLOPS) -(%f GFLOPS)' %(sum_q,sum_q/1000000,sum_q/1000000000))
 
 print ("--------------------------------------------")
 rs=[float(x[1]) for x in list_csv]
 tcs = [float(x[3]) for x in list_csv]
-#print ("RMSE:::",metrics.mean_squared_error(rs,tcs))
 print ("Mean Absolute Error (MAE)               :",metrics.mean_absolute_error(rs,tcs),metrics.mean_absolute_error(rs,rs))
-#print ("MEI                                     :")
 print ("RMSE                                    :",np.sqrt(metrics.mean_squared_error(rs,tcs)),np.sqrt(metrics.mean_squared_error(rs,rs)))
-#y_true, y_pred = check_arrays(rs, tcs)
-#print ("MAPE:", np.mean(np.abs((y_true - y_pred) / y_true)) * 100)
 print ("MSE(Mean Square Error - Mayor mas error):",metrics.mean_squared_error(rs,tcs),metrics.mean_squared_error(rs,rs))
-#print ("MAPE:",metrics.mean_absolute_percentage_error(rs,tcs)) 
 
 print ("EVS(Variance regression score)          :",metrics.explained_variance_score(rs, tcs), metrics.explained_variance_score(rs, rs))
 print ("R2S(coefficient of determinacion  best1):",metrics.r2_score(rs,tcs),metrics.r2_score(rs,rs))
@@ -244,32 +186,9 @@ if show_images==1:
 	plt.xlim([-1, max(len(A), len(B)) + 1])
 	plt.plot(A)
 	plt.plot(B)
-      #plt.plot(B + offset)
 	for (x1, x2) in path:
 		plt.plot([x1, x2], [A[x1], B[x2] + offset])
-           #plt.show()
 	plt.show()
-'''
-print(max(request_serie))
-print(min(request_serie))
-print(sum(rs))
-print (sum(tcs))
-print (len(list_csv))
-print ("MAE:",(sum(rs)-sum(tcs))/len(list_csv))
-print ("MAE::",mean_absolute_error(rs,tcs))
-#print ("RMSE:",rmse(rs,tcs))
-#print ("RMSE::",mean_squared_error(rs,tcs))
-'''
 
 
-#print(sum(request_serie))
-
-#dtw.dtw_show([float(p) for p in request_serie],[float(p) for p in ProcessingCapacity_serie])
-
-
-
-#fname=get_sample_data('..\iofiles\resultado.txt')
-#total=csv2rec(fname,delimiter=' ')
-
-#print (len(reader))
 

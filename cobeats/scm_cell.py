@@ -1,12 +1,6 @@
 
-#import logging
 import configparser
 from random import randint
-
-
-#import psutil
-#import ConfigParser
-#import sys
 
 ''' This cell use shelf information to take decision. Using especially cpu use
     NO information from other nodes are used.
@@ -55,16 +49,9 @@ class scm_cell:
      
         self.internal_code=code
         self.status=1  
-        #print "Inicialize cell ", self.internal_code
-        #logging.debug("Initialize", self.internal_code)
-        #config = ConfigParser.ConfigParser()
         config = configparser.ConfigParser()
         config.readfp(open(configfile))
-        #param1 = config.get('Cell', 'param1')
-        #self.minimal_running = int (config.get('Cell', 'minimal_number_running'))
         self.minimal_running = min_running
-        #self.maxim_running = int (config.get('Cell', 'max_number_running'))
-        #self.max_running=int (config.get('Cell', 'max_number_running'))
         self.pdead = int (config.get('Cell', 'deadprovability'))
         self.dead_cpu_use = int (config.get('Cell', 'dead_cpu_use'))
         
@@ -72,15 +59,12 @@ class scm_cell:
         
         
         self.pdupl = int (config.get('Cell', 'duplprovability'))
-        #self.pdupl_orig=self.pdupl
-        #self.pdupl_factor = int (config.get('Cell', 'duplprovability_factor'))
 
         self.dupl_cpu_use = int (config.get('Cell', 'dupl_cpu_use'))
         
         self.pmove = int (config.get('Cell', 'moveprovability'))
         self.pscav = int (config.get('Cell', 'vscaprovability'))
         
-        #self.orig_cell_processing_capacity=int (config.get('Cell', 'init_process_capacity'))
         self.orig_cell_processing_capacity=int (config.get ('Container', 'init_container_cicles_capacity'))
         self.cell_processing_capacity=self.orig_cell_processing_capacity
         
@@ -101,7 +85,6 @@ class scm_cell:
         a = "(",self.cpu_use,"-",self.mem_use,"-",self.io_use,")"
         return a
     
-    #def set_system_status(self,xcpu_use,xmem_use,xio_use,cell_capacity,q_size):
     def actuate(self,xcpu_use,xmem_use,xio_use,cell_capacity,q_size):
    
         """Read system status - get values from system"""
@@ -111,8 +94,6 @@ class scm_cell:
         self.cell_processing_capacity=cell_capacity
         self.queue=q_size
     
-    #def actuate(self):
-        
         self.action='N'
 
         if (self.status==1):
@@ -161,7 +142,6 @@ class scm_cell:
         if len(self.history)>self.max_history:
             self.history.pop(0)
             
-        #return str(self.action),self.processing_increase,self.cell_processing_capacity
         if (self.action=="X"):
              new_queue=self.queue/self.xaction  
         else:

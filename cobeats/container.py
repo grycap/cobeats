@@ -24,17 +24,13 @@ class container:
     icm_server=""
     cicles_running=0
 
-    #def __del__(self):
-        #print ("Foo: bye %f"% self.cicles_running)
     def living_time(self):
-        #print ("Living %f"% self.cicles_running)
         return self.cicles_running
     
     
     def __init__(self,code,min_running,cellconfigfile,initial_queue_len,serv):
         
         self.conf = configparser.ConfigParser()
-        #self.conf.readfp(open(r'../conf/cell.cfg'))
         self.conf.readfp(open(cellconfigfile))
 
         self.cicles_req= int (self.conf.get('Container', 'cicles_req'))
@@ -44,7 +40,6 @@ class container:
         self.icm_simulation=int (self.conf.get('Container', 'icm_simulation'))
         if self.icm_simulation==1:
              ''' is a icm simulation '''
-             #print ("This is a container in a icm simulation")
              self.icm_size=int (self.conf.get('Container', 'icm_size'))
              self.icm_server=serv
              self.cell=icm_cell(code,min_running,cellconfigfile,self.icm_server)
@@ -66,72 +61,41 @@ class container:
         self.queue=initial_queue_len
         self.proc_used=0
 
-
-        
-        #print ("Init: %d" % self.queue)        
-    #def actuate(self):
-        # return self.cell.actuate()
     
     def processing_capacity(self):
         return self.container_cicles_capacity*self.slot_time/1000  
     
     def processing_used(self):
-        #print ("cpu_used:", self.cpu_used)
-        #return ((self.cpu_used/100)*self.container_cicles_capacity)*(self.slot_time/1000) 
-        #return self.cpu_used*self.container_cicles_capacity*self.slot_time/100000 
         return self.proc_used
     def queue_req_pending(self):
-        #return self.total_cicles_request
         return self.queue
         
     
     def process(self,req):
 
         self.cicles_running+=1
-        #self.total_cicles_request+=(req*self.cicles_req)
         self.total_cicles_request+=req
-        #print (self.total_cicles_request) 
-        #self.queue=0
-
-      #  print ("total_request",self.total_cicles_request, "Pocesing capacity:",self.container_cicles_capacity*self.slot_time/1000)
         
         if (self.total_cicles_request<(self.container_cicles_capacity*self.slot_time/1000)):         
-            # print (self.total_cicles_request,"-" , self.container_cicles_capacity)
             self.cpu_used=int((self.total_cicles_request*100)/(self.container_cicles_capacity*self.slot_time/1000))
             self.proc_used=self.total_cicles_request
             self.total_cicles_request=0
             self.queue=0
     
-            #    return_req=0
         else:
             self.proc_used=self.container_cicles_capacity*self.slot_time/1000
             self.cpu_used=100
             self.total_cicles_request-=self.proc_used
             self.queue=self.total_cicles_request
-   
-        #self.cell.set_system_status(self.cpu_used,0,0,self.container_cicles_capacity,self.queue)
-       # result, incr, self.container_cicles_capacity,queue_new = self.cell.actuate()
-
 
         result, incr, self.container_cicles_capacity,queue_new = self.cell.actuate(self.cpu_used,0,0,self.container_cicles_capacity,self.queue)
 
         if (result == "X"):
-            #print ("Queue1: %d" % self.queue)
-            #self.queue-=queue_new        
             self.queue=queue_new
-           # print ("Queue2: %d" % self.queue)
         
-        #if (result=='s' or result=='S'):    
-        #    self.container_cicles_capacity=self.container_cicles_capacity*(incr/100)
         
         if (result == "D" and self.icm_simulation==1 ):
             self.icm_server.remove_(self.internal_code)       
         
-        #self.req_capacity=self.cell.get_processing_capacity()
         return result,queue_new  
-    
-    
-        #    return_req=req-self.container_cicles_capacity
-        #return return_req
-    
     

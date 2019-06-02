@@ -4,7 +4,7 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 #import matplotlib
-''' This server retur mean value for sel.size right and self.size left, includin node value, for list of nodes 
+''' This server return mean value for sel.size right and self.size left, includin node value, for list of nodes 
     it store data in nodes in a list that where add in last position and remove node desired
     list is continuous and next value for last node is first one and previous value for first one is last value 
 '''
@@ -106,18 +106,12 @@ class server:
                     t=aux+siz+len(self.list_nodes)
                     tt=aux-siz+len(self.list_nodes)
                     break
-                   # if tt < 0 :
-                   #    tt+=len(self.list_nodes)
-                    #print ("Encontrado en posicion ", aux , "mostrar de:" ,t%len(self.list_nodes) , " a ", tt%len(self.list_nodes))
-               #print ("[",tt%len(self.list_nodes)," -", aux , " - " ,t%len(self.list_nodes) , " ] ")
           print ("Actuando en :", v ,"en rango[",tt,t,"] - list len:",len(self.list_nodes))
           for d in range (tt%len(self.list_nodes), tt%len(self.list_nodes) + 1 + siz*2):
                 r=d%len(self.list_nodes)
                 sum+=self.list_nodes[r].get_value()
                 print ("pos:",r,"Cod.",self.list_nodes[r].get_code(),"Val.", self.list_nodes[r].get_value(),"Size:",siz,"len:",len(self.list_nodes), "Area:",self.size)
                    
-          #print ("suma",sum,sum/len(self.list_nodes), siz) 
-         # return sum/len(self.list_nodes)
           return sum/((siz*2)+1)
                
     def show(self):
