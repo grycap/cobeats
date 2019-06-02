@@ -3,8 +3,9 @@
 Cobeats (COntainers Bio-inspired Enhanced AuToscaling System) is a software to test the proposoal of use bio-inspired cells in autoscaling systems based in software containers. 
 
 ## Getting Started
+This software introduces a set of bio-inspired algorithms aimed at supporting auto-scaling in container-based computing platforms.
 
-
+A key feature of cloud computing is elasticity, where applications can dynamically adjust the computing and storage resources. On the one hand, vertical elasticity involves increasing or decreasing the amount of computing and memory resources of a single computing entity. On the other hand, horizontal elasticity requires changing the architecture of the application to run on a distributed fleet of computing nodes that can grow and shrink according to the values of certain metrics, such as the average CPU usage across the available nodes.
 
 ## Instalation and use
 To run this code only is necesary copy software from this repository to running machine. It was executed in Python 3.5.2. No others versions are tested.
@@ -19,9 +20,10 @@ Some python libreries are necesary to run Cobeats.
 
 ## Basic execution example
 
-For basic execution run ./bin/run_compare.sh with options. Fires is algorithm used and second is load type
+For basic execution run ./bin/run_compare.sh with options. First parameter is algorithm used and second one is load type.
 
-Using help in ./run_compare shell, you can see all options
+Using help in ./run_compare shell without option  you can see all posible options.
+
 ```
 ./run_compare.sh Option Load
 option: 
@@ -34,58 +36,46 @@ Load:
  3 - NASA load
 ```
 
-For example ./run_compare.sh B 1   for run Bio-inspared algorithm with Sintetic load.
+For example, executing ./run_compare.sh B 1  is posible run ia Bio-inspired algorithm with Sintetic load.
 
 
 ## Configuration
 Multiple file are added in this version to run all test. Configuration file for a simulation can use next parameters in seccions:
 
-* [Cell] Section. This section contain information about cell behaviour
-* deadprovability 
-* dead_cpu_use
+* [Cell] Section. This section contain information about cell behaviour.
+* deadprobability - Dead probability for algorithm limits.
+* dead_cpu_use - Limit for dead resource use.
+* moveprobability - Not used
+* vscaprobability - Vertical scaling probability
+* duplprobability - Creation area probability
+* dupl_cpu_use - Limit for X (creation area)
+* init_process_capacity - Initial node capacity
+* variation_process_capacity - Step variation for vertical scaling
+* max_history - Not used
+* X_total_containers - Total containers created for X actions
 
-* moveprovability
-* vscaprovability
+[Simulation] Section for simulation
+* minimun_cells_running - Mininum running cells
 
-* duplprovability
-* dupl_cpu_use
-
-init_process_capacity
-variation_process_capacity
-
-max_history
-
-X_total_containers
-
-
-
-
-[Simulation] Section
-minimun_cells_running
-
-
-[Container]
-
-cicles_req
-slot_time
-init_container_cicles_capacity
-max_scale_limit
-min_scale_limit
-
-load_balancing_algorithm
-
-icm_simulation
-icm_size
-icm_neighbourhood_part
-icm_local_part
+[Container] Container part for simulation
+* cicles_req - NOt operative
+* slot_time - Not operative
+* init_container_cicles_capacity - Not operative
+* max_scale_limit - Maximun running vertical scaling capacity
+* min_scale_limit - Minimun running vertical scaling capacity
+* load_balancing_algorithm - Load balancing algorithm
+* icm_simulation - Is a icm algoritm simulation
+* icm_size - icm size for request data
+* icm_neighbourhood_part - icm part for neighbouhood of NOX funciton
+* icm_local_part - icm part for local part of NOX function
 
 a simple example
 ```
-dprovability = 80
+dprobability = 80
 dead_cpu_use = 30
-moveprovability = 10
-vscaprovability = 80
-duplprovability = 80
+moveprobability = 10
+vscaprobability = 80
+duplprobability = 80
 dupl_cpu_use = 90
 init_process_capacity=1000
 variation_process_capacity=25
