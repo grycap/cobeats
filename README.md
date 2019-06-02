@@ -10,12 +10,11 @@ Cobeats (COntainers Bio-inspired Enhanced AuToscaling System) is a software to t
 To run this code only is necesary copy software from this repository to running machine. It was executed in Python 3.5.2. No others versions are tested.
 Some python libreries are necesary to run Cobeats. 
 
-configparser
-mathplotlib
-numpy
-pandas
-statsmodels
-sklearn
+* mathplotlib 2.2.3
+* numpy 1.15.1
+* pandas 0.23.4
+* statsmodels 0.9.0
+* sklearn 0.19.2
 
 
 ## Basic execution example
