@@ -71,6 +71,7 @@ Multiple file are added in this version to run all test. Configuration file for 
 
 a simple example
 ```
+[Cell]
 dprobability = 80
 dead_cpu_use = 30
 moveprobability = 10
