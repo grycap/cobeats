@@ -105,5 +105,5 @@ icm_local_part=10
 
 ## Licence
 
-This project is licensed under the Apache LIcense - see the [LICENCE] (LICENCE) file for details.
+This project is licensed under the Apache LIcense - see the LICENCE file for details.
 
