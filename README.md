@@ -8,6 +8,14 @@ Cobeats (COntainers Bio-inspired Enhanced AuToscaling System) is a software to t
 
 ## Instalation and use
 To run this code only is necesary copy software from this repository to running machine. It was executed in Python 3.5.2. No others versions are tested.
+Some python libreries are necesary to run Cobeats. 
+
+configparser
+mathplotlib
+numpy
+pandas
+statsmodels
+sklearn
 
 
 ## Basic execution example
@@ -33,15 +41,15 @@ For example ./run_compare.sh B 1   for run Bio-inspared algorithm with Sintetic 
 ## Configuration
 Multiple file are added in this version to run all test. Configuration file for a simulation can use next parameters in seccions:
 
-*[Cell] Section. This section contain information about cell behaviour
-*deadprovability 
-*dead_cpu_use
+* [Cell] Section. This section contain information about cell behaviour
+* deadprovability 
+* dead_cpu_use
 
-*moveprovability
-*vscaprovability
+* moveprovability
+* vscaprovability
 
-*duplprovability
-*dupl_cpu_use
+* duplprovability
+* dupl_cpu_use
 
 init_process_capacity
 variation_process_capacity
@@ -102,4 +110,11 @@ icm_neibourhood_part=90
 icm_local_part=10
 ```
 
+##Authors
+
+* **Jose Herrera** - *Initial work*
+
+##Licence
+
+This project is licensed under the Apache LIcense - see the [LICENCE] (LICENCE) file for details.
 
