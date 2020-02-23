@@ -1,49 +1,47 @@
 # Cobeats
 
-Cobeats (COntainers Bio-inspired Enhanced AuToscaling System) is a software to test the proposoal of use bio-inspired cells in autoscaling systems based in software containers. 
+COBEATS (COntainers Bio-inspired Enhanced AuToscaling System) is a software to test the proposal of using bio-inspired cells in autoscaling systems based on software containers. 
 
 ## Getting Started
-This software introduces a set of bio-inspired algorithms aimed at supporting auto-scaling in container-based computing platforms.
+This software introduces a set of bio-inspired algorithms aimed at supporting auto-scaling in Container Orchestration Platforms.
 
-A key feature of cloud computing is elasticity, where applications can dynamically adjust the computing and storage resources. On the one hand, vertical elasticity involves increasing or decreasing the amount of computing and memory resources of a single computing entity. On the other hand, horizontal elasticity requires changing the architecture of the application to run on a distributed fleet of computing nodes that can grow and shrink according to the values of certain metrics, such as the average CPU usage across the available nodes.
+A key feature of cloud computing is elasticity, where applications can dynamically adjust the computing and storage resources. On the one hand, vertical elasticity involves increasing or decreasing the amount of computing and memory resources of a single computing entity. On the other hand, horizontal elasticity involves running on a distributed fleet of computing nodes that can grow and shrink according to the values of certain metrics, such as the average CPU usage across the available nodes.  This simulation software studies the impact of integrating bio-inspired approaches for dynamic distributed auto-scaling on container orchestration platforms. 
 
 ## Instalation and use
-To run this code only is necesary copy software from this repository to running machine. It was executed in Python 3.5.2. No others versions are tested.
-Some python libreries are necesary to run Cobeats. 
-
+To run this code only (tested on Python 3.5.2), you need to install the following libraries:
 * mathplotlib 2.2.3
 * numpy 1.15.1
 * pandas 0.23.4
 * statsmodels 0.9.0
 * sklearn 0.19.2
 
-It is included all information about loads needed for simulation.
+This repository includes the information about the simulated workloads.
 
 ## Basic execution example
 
-For basic execution run ./bin/run_compare.sh with options. First parameter is algorithm used and second one is load type.
+For basic execution run ```bin/run_compare.sh``` with options. The first parameter is the algorithm used and the second one is the workload type.
 
-Using help in ./run_compare shell without option  you can see all posible options.
+The help is shown by running ```bin/run_compare.sh``` without options:
 
-```
+```sh
 ./run_compare.sh Option Load
 option: 
  C - Conventional
  B - Bioinspired
  P - Prediction
 Load: 
- 1 - Sintetic load
+ 1 - Synthetic load
  2 - FIFA load
  3 - NASA load
 ```
 
-For example, executing ./run_compare.sh B 1  is posible run ia Bio-inspired algorithm with Sintetic load.
+For example, executing ```bin/run_compare.sh B 1``` will run a bio-inspired algorithm with synthetic load.
 
 
 ## Configuration
-Multiple file are added in this version to run all test. Configuration file for a simulation can use next parameters in seccions:
+Multiple file are added in this version to run all the tests. The configuration file for a simulation can use the following parameters in the corresponding sections:
 
-**[Cell]** Section. This section contain information about cell behaviour.
+**[Cell]** Section. This section contain information about the cell behaviour.
 * deadprobability - Dead probability for algorithm limits.
 * dead_cpu_use - Limit for dead resource use.
 * moveprobability - Not used
@@ -59,21 +57,21 @@ Multiple file are added in this version to run all test. Configuration file for 
 * minimun_cells_running - Mininum running cells
 
 **[Container]** Container part for simulation
-* cicles_req - NOt operative
+* cicles_req - Not operative
 * slot_time - Not operative
 * init_container_cicles_capacity - Not operative
-* max_scale_limit - Maximun running vertical scaling capacity
-* min_scale_limit - Minimun running vertical scaling capacity
+* max_scale_limit - Maximum running vertical scaling capacity
+* min_scale_limit - Minimum running vertical scaling capacity
 * load_balancing_algorithm - Load balancing algorithm
-* icm_simulation - Is a icm algoritm simulation
-* icm_size - icm size for request data
-* icm_neighbourhood_part - icm part for neighbouhood of NOX funciton
-* icm_local_part - icm part for local part of NOX function
+* icm_simulation - Is an ICM algoritm simulation
+* icm_size - ICM size for request data
+* icm_neighbourhood_part - ICM part for neighbouhood of NOX funciton
+* icm_local_part - ICM part for local part of NOX function
 
-a simple example
+Notice the following example:
 ```
 [Cell]
-dprobability = 80
+deadprobability = 80
 dead_cpu_use = 30
 moveprobability = 10
 vscaprobability = 80
@@ -104,9 +102,9 @@ icm_local_part=10
 ## Authors
 
 * **J Herrera** - *Initial work* - jherrera@upv.es
-* **G Molto**
+* **G Moltó** - *Supervisor* - gmolto@dsic.upv.es  
 
 ## Licence
 
-This project is licensed under the Apache LIcense - see the LICENCE file for details.
+This project is licensed under the Apache 2.0 License - see the LICENSEE file for details.
 
