@@ -25,10 +25,10 @@ class scm_cell:
     #tic=0                  #Total tics or age
     status=1	           #1- alive  0-dead
     
-    pdead=0                #dead provability
-    pdupl=0                #duplication provability
-    pmove=0                #move provability
-    pscav=0                #scale provability
+    pdead=0                #dead probability
+    pdupl=0                #duplication probability
+    pmove=0                #move probability
+    pscav=0                #scale probability
     
     action='N'	           #Result action N-None X-Duplicate D-Dead R-resize Up  r-Resize Down M-Move
     
@@ -66,18 +66,18 @@ class scm_cell:
         config = configparser.ConfigParser()
         config.readfp(open(configfile))
         self.minimal_running = min_running
-        self.pdead = int (config.get('Cell', 'deadprovability'))
+        self.pdead = int (config.get('Cell', 'deadprobability'))
         self.dead_cpu_use = int (config.get('Cell', 'dead_cpu_use'))
         
         
         
         
-        self.pdupl = int (config.get('Cell', 'duplprovability'))
+        self.pdupl = int (config.get('Cell', 'duplprobability'))
 
         self.dupl_cpu_use = int (config.get('Cell', 'dupl_cpu_use'))
         
-        self.pmove = int (config.get('Cell', 'moveprovability'))
-        self.pscav = int (config.get('Cell', 'vscaprovability'))
+        self.pmove = int (config.get('Cell', 'moveprobability'))
+        self.pscav = int (config.get('Cell', 'vscaprobability'))
         
         self.orig_cell_processing_capacity=int (config.get ('Container', 'init_container_cicles_capacity'))
         self.cell_processing_capacity=self.orig_cell_processing_capacity

@@ -99,11 +99,11 @@ def run():
 	print ("Load Balancing Algorithm  : %d (1-Equal, 2-less Used , 3-Processing Capacity) " % load_balancing_algorithm )
 	print ("Min Cells running         : %d" % minimun_cells)
 
-	pdead_value = int (conf.get('Cell', 'deadprovability'))
+	pdead_value = int (conf.get('Cell', 'deadprobability'))
 	dead_cpu_use_value = int (conf.get('Cell', 'dead_cpu_use'))
-	pdupl_value = int (conf.get('Cell', 'duplprovability'))
+	pdupl_value = int (conf.get('Cell', 'duplprobability'))
 	dupl_cpu_use_value = int (conf.get('Cell', 'dupl_cpu_use'))
-	pscav_value = int (conf.get('Cell', 'vscaprovability'))
+	pscav_value = int (conf.get('Cell', 'vscaprobability'))
 
 	xaction = int (conf.get('Cell', 'X_total_containers'))
 	print ("Tot Container in X action : %d" % (xaction))
@@ -367,11 +367,11 @@ if __name__ == '__main__':
                
 						myfileconf = io.open('cell.cfg', mode='wt', encoding='utf-8')
 						myfileconf.write(u'[Cell] \n' +
-						'deadprovability = ' + str(VarDeadProvability) + ' \n' +
+						'deadprobability = ' + str(VarDeadProvability) + ' \n' +
 						'dead_cpu_use = ' + str(VarDead) +' \n'+
-						'moveprovability = 10 \n'+
-						'vscaprovability = 0 \n'+
-						'duplprovability = '+ str(VarCreateProvability) +' \n'+
+						'moveprobability = 10 \n'+
+						'vscaprobability = 0 \n'+
+						'duplprobability = '+ str(VarCreateProvability) +' \n'+
 						'dupl_cpu_use = ' + str(VarCreate) +' \n'+
 						'init_process_capacity=1000 \n'+
 						'variation_process_capacity=25 \n'+

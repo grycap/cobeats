@@ -1,3 +1,4 @@
+BASE=/home/ubuntu/Mytest/cobeats/scm/v0.2
 
 test="c_day5_1.gz \
 wc_day6_1.gz \
@@ -256,10 +257,10 @@ for x in $test
 do
 
 wget echo ftp://ita.ee.lbl.gov/traces/WorldCup/$x 
-gzip -dc $x | bin/recreate state/object_mappings.sort > kk2.tmp
+gzip -dc $x | bin/recreate state/object_mappings.sort > log2.tmp
 
 #awk 'BEGIN { FS=OFS=SUBSEP="|"}{arr[$1,$2]+=$3+$4 }END {for (i in arr) print i,arr[i]}' file
-cat kk2.tmp|awk -F"-" '{print $3}'|awk -F" " '{print $1}'|awk 'BEGIN { FS= "[" ; OFS=SUBSEP=":"}{arr[$2]+=1 }END {for (i in arr) print i,arr[i]}'|awk 'BEGIN { FS= ":" ; OFS=SUBSEP="|"}{arr[$1,$2,$3]+=$5 }END {for (i in arr) print i,arr[i]}'|sort >> final.txt
+cat log2.tmp|awk -F"-" '{print $3}'|awk -F" " '{print $1}'|awk 'BEGIN { FS= "[" ; OFS=SUBSEP=":"}{arr[$2]+=1 }END {for (i in arr) print i,arr[i]}'|awk 'BEGIN { FS= ":" ; OFS=SUBSEP="|"}{arr[$1,$2,$3]+=$5 }END {for (i in arr) print i,arr[i]}'|sort >> final.txt
 
 #|awk 'BEGIN { FS= ":" ; OFS=SUBSEP="|"}{arr[$0,$1,$2]+=$4 }END {for (i in arr) print i,arr[i]}'
 rm $x
