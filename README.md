@@ -109,7 +109,7 @@ Multiple file are added in this version to run all test. Configuration file for 
 * load_balancing_algorithm - Load balancing algorithm
 * icm_simulation - Is a icm algoritm simulation
 * icm_size - icm size for request data
-* icm_neighbourhood_part - icm part for neighbouhood of NOX funciton
+* icm_neighborhood_part - icm part for neighbohood of NOX funciton
 * icm_local_part - icm part for local part of NOX function
 
 a simple example

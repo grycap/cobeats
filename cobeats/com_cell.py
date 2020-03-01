@@ -59,8 +59,8 @@ class com_cell:
     #processing_increase=0
     history=list()
     
-    min_processing_cicle_capacity=0
-    max_processing_cicle_capacity=0
+    min_processing_cycle_capacity=0
+    max_processing_cycle_capacity=0
     
     max_history=0
     queue=0
@@ -98,14 +98,14 @@ class com_cell:
         self.pscav = int (config.get('Cell', 'vscaprobability'))
         
         #self.orig_cell_processing_capacity=int (config.get('Cell', 'init_process_capacity'))
-        self.orig_cell_processing_capacity=int (config.get ('Container', 'init_container_cicles_capacity'))
+        self.orig_cell_processing_capacity=int (config.get ('Container', 'init_container_cycles_capacity'))
         self.cell_processing_capacity=self.orig_cell_processing_capacity
         
         self.var_processing_capacity=int (config.get('Cell', 'variation_process_capacity'))
         
        
-        self.min_processing_cicle_capacity=int (config.get('Container', 'min_scale_limit'))
-        self.max_processing_cicle_capacity=int (config.get('Container', 'max_scale_limit'))
+        self.min_processing_cycle_capacity=int (config.get('Container', 'min_scale_limit'))
+        self.max_processing_cycle_capacity=int (config.get('Container', 'max_scale_limit'))
        
         self.max_history=int (config.get('Cell', 'max_history'))
         self.xaction = int (config.get('Cell', 'X_total_containers'))
@@ -150,7 +150,7 @@ class com_cell:
                     
                  if (self.previous_cpu_use < self.cpu_use):
                        '''#ACTION vertical INCREASE'''
-                       if self.cell_processing_capacity+(self.cell_processing_capacity*self.var_processing_capacity/100)>=self.max_processing_cicle_capacity:
+                       if self.cell_processing_capacity+(self.cell_processing_capacity*self.var_processing_capacity/100)>=self.max_processing_cycle_capacity:
                             self.action="X"
                        else:
                             self.action='S'
@@ -160,7 +160,7 @@ class com_cell:
                        '''#ACTION vertical DECREASE'''
                        self.action='s'
                        self.cell_processing_capacity-=self.cell_processing_capacity*self.var_processing_capacity/100
-                       if (self.cell_processing_capacity<=self.min_processing_cicle_capacity):
+                       if (self.cell_processing_capacity<=self.min_processing_cycle_capacity):
                             self.status=0
                             self.action="D"
     

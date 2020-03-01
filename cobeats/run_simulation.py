@@ -79,7 +79,7 @@ def run():
         print ("Error Reading conf file")
         quit()
     minimun_cells= int (conf.get('Simulation', 'minimun_cells_running'))
-    cicles_req= int (conf.get('Container', 'cicles_req'))
+    cycles_req= int (conf.get('Container', 'cycles_req'))
     load_balancing_algorithm=int(conf.get('Container','load_balancing_algoritm'))
     
     print ("Load Balancing Algorithm  : %d (1-Equal, 2-less Used , 3-Processing Capacity) " % load_balancing_algorithm )
@@ -131,7 +131,7 @@ def run():
         
         cpu_requested, mem1, io1 = (int(val) for val in linea_leida.split())
         
-        cpu_requested=cpu_requested*cicles_req
+        cpu_requested=cpu_requested*cycles_req
         
         pc=0  #processing capacity
         tp=0  #processing used
@@ -309,7 +309,7 @@ def run():
     
     z9 = [x[11] for x in results_list]
     
-    y_cicle = [x[1]*100 for x in results_list]
+    y_cycle = [x[1]*100 for x in results_list]
  
     suma=0
     for i in QueueLength:
@@ -349,8 +349,8 @@ if __name__ == '__main__':
                         '[Simulation] \n'+
                         'minimun_cells_running = 2 \n' +
                         '[Container] \n'+
-                        'cicles_req=100 \n'+
-                        'init_container_cicles_capacity=1000 \n'+
+                        'cycles_req=100 \n'+
+                        'init_container_cycles_capacity=1000 \n'+
                         'max_scale_limit=4000 \n'+
                         'min_scale_limit=500 \n'+
 

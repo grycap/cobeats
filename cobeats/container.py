@@ -23,24 +23,24 @@ import configparser
 
 class container:
     
-    total_cicles_request=0
+    total_cycles_request=0
     cell=""
-    container_cicles_capacity=0
+    container_cycles_capacity=0
     internal_code=0
     cpu_used=0.0
-    cicles_req=0
+    cycles_req=0
     conf=0
     queue=0
     slot_time=0
-    min_processing_cicle_capacity=0
-    max_processing_cicle_capacity=0
+    min_processing_cycle_capacity=0
+    max_processing_cycle_capacity=0
     icm_simulation=0
     icm_size=0
     icm_server=""
-    cicles_running=0
+    cycles_running=0
 
     def living_time(self):
-        return self.cicles_running
+        return self.cycles_running
     
     
     def __init__(self,code,min_running,cellconfigfile,initial_queue_len,serv):
@@ -48,9 +48,9 @@ class container:
         self.conf = configparser.ConfigParser()
         self.conf.readfp(open(cellconfigfile))
 
-        self.cicles_req= int (self.conf.get('Container', 'cicles_req'))
+        self.cycles_req= int (self.conf.get('Container', 'cycles_req'))
         self.slot_time= int (self.conf.get('Container', 'slot_time'))
-        self.total_cicles_request=0
+        self.total_cycles_request=0
 
         self.icm_simulation=int (self.conf.get('Container', 'icm_simulation'))
         if self.icm_simulation==1:
@@ -67,18 +67,18 @@ class container:
              self.cell=scm_cell(code,min_running,cellconfigfile)
 
         #Ttaol FLOPS
-        self.container_cicles_capacity= int (self.conf.get('Container', 'init_container_cicles_capacity'))
+        self.container_cycles_capacity= int (self.conf.get('Container', 'init_container_cycles_capacity'))
         self.internal_code=code
         
-        self.min_processing_cicle_capacity=int (self.conf.get('Container', 'min_scale_limit'))
-        self.max_processing_cicle_capacity=int (self.conf.get('Container', 'max_scale_limit'))
+        self.min_processing_cycle_capacity=int (self.conf.get('Container', 'min_scale_limit'))
+        self.max_processing_cycle_capacity=int (self.conf.get('Container', 'max_scale_limit'))
      
         self.queue=initial_queue_len
         self.proc_used=0
 
     
     def processing_capacity(self):
-        return self.container_cicles_capacity*self.slot_time/1000  
+        return self.container_cycles_capacity*self.slot_time/1000  
     
     def processing_used(self):
         return self.proc_used
@@ -88,22 +88,22 @@ class container:
     
     def process(self,req):
 
-        self.cicles_running+=1
-        self.total_cicles_request+=req
+        self.cycles_running+=1
+        self.total_cycles_request+=req
         
-        if (self.total_cicles_request<(self.container_cicles_capacity*self.slot_time/1000)):         
-            self.cpu_used=int((self.total_cicles_request*100)/(self.container_cicles_capacity*self.slot_time/1000))
-            self.proc_used=self.total_cicles_request
-            self.total_cicles_request=0
+        if (self.total_cycles_request<(self.container_cycles_capacity*self.slot_time/1000)):         
+            self.cpu_used=int((self.total_cycles_request*100)/(self.container_cycles_capacity*self.slot_time/1000))
+            self.proc_used=self.total_cycles_request
+            self.total_cycles_request=0
             self.queue=0
     
         else:
-            self.proc_used=self.container_cicles_capacity*self.slot_time/1000
+            self.proc_used=self.container_cycles_capacity*self.slot_time/1000
             self.cpu_used=100
-            self.total_cicles_request-=self.proc_used
-            self.queue=self.total_cicles_request
+            self.total_cycles_request-=self.proc_used
+            self.queue=self.total_cycles_request
 
-        result, incr, self.container_cicles_capacity,queue_new = self.cell.actuate(self.cpu_used,0,0,self.container_cicles_capacity,self.queue)
+        result, incr, self.container_cycles_capacity,queue_new = self.cell.actuate(self.cpu_used,0,0,self.container_cycles_capacity,self.queue)
 
         if (result == "X"):
             self.queue=queue_new
