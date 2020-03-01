@@ -1,17 +1,17 @@
 # Cobeats
 
-Cobeats (COntainers Bio-inspired Enhanced AuToscaling System) is a software to test the proposoal of use bio-inspired cells in autoscaling systems based in software containers. 
+COBEATS (COntainers Bio-inspired Enhanced AuToscaling System) is a software to test the proposal of using bio-inspired cells in autoscaling systems based on software containers. 
 
 ## Getting Started
-This software introduces a set of bio-inspired algorithms aimed at supporting auto-scaling in container-based computing platforms.
+This software introduces a set of bio-inspired algorithms aimed at supporting auto-scaling in Container Orchestration Platforms.
 
 A key feature of cloud computing is elasticity, where applications can dynamically adjust the computing and storage resources. On the one hand, vertical elasticity involves increasing or decreasing the amount of computing and memory resources of a single computing entity. On the other hand, horizontal elasticity requires changing the architecture of the application to run on a distributed fleet of computing nodes that can grow and shrink according to the values of certain metrics, such as the average CPU usage across the available nodes.
 
 ## Instalation and use
 To run this code only is necesary copy software from this repository to running machine. It was executed in Python 3.5.2. No others versions are tested.  Some python libraries are necesary to run Cobeats.  
-
+```
 localhost: /home/instalation_dir$ conda list -n desa
-# Name                    Version                   Build  Channel
+Name                    Version                   Build  Channel
 blas                      1.0                         mkl    anaconda
 ca-certificates           2019.1.23                     0    anaconda
 certifi                   2019.3.9                 py37_0    anaconda
@@ -44,7 +44,7 @@ tk                        8.6.8                hbc83047_0    anaconda
 wheel                     0.33.1                   py37_0    anaconda
 xz                        5.2.4                h14c3975_4    anaconda
 zlib                      1.2.11               h7b6447c_3    anaconda
-
+```
 
 * mathplotlib 2.2.3
 * numpy 1.15.1
@@ -52,7 +52,7 @@ zlib                      1.2.11               h7b6447c_3    anaconda
 * statsmodels 0.9.0
 * sklearn 0.19.2
 
-It is included all information about loads needed for simulation.
+This repository includes the information about the simulated workloadsx
 
 Change instalation diretory in bin/run_compare.sh in BASE variable for your instalation directory
 
@@ -63,7 +63,7 @@ A XWindows Server is need to output simulation graphs. Be sure a display is aval
 
 ## Basic execution example
 
-For basic execution run ./bin/run_compare.sh with options. First parameter is algorithm used and second one is load type.
+For basic execution run ```./bin/run_compare.sh``` with options. First parameter is algorithm used and second one is load type.
 
 Using help in ./run_compare shell without option  you can see all posible options.
 
