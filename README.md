@@ -57,7 +57,7 @@ This repository includes the information about the simulated workloads.
 
 Copy all repository in a directory. Change instalation diretory on ```bin/run_compare.sh``` BASE variable for your instalation directory before run simulation.
 
-     ```BASE=/full_instalation_directory```
+     BASE=/full_instalation_directory
 
 A XWindows Server is needed to output simulation graphs. Be sure a display is avalable running xeyes or xclock commands. We ran it using putty with X11forwarding option active and Xming Server on Windows client side.
 
