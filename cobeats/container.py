@@ -1,4 +1,4 @@
-# JHH - Cobeats
+# JHH - Cobeats -2020
 # Copyright (C) GRyCAP - I3M - UPV
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +12,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 
 from __future__ import print_function
 from scm_cell import scm_cell

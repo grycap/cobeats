@@ -7,9 +7,6 @@
 
 #Change instalation directory for use 
 BASE=/home/ubuntu/Mytest/cobeats/scm/v0.2
-aaaa
-aaaa
-
 
 help(){
      echo "$0 option Load"
