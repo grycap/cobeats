@@ -8,8 +8,43 @@ This software introduces a set of bio-inspired algorithms aimed at supporting au
 A key feature of cloud computing is elasticity, where applications can dynamically adjust the computing and storage resources. On the one hand, vertical elasticity involves increasing or decreasing the amount of computing and memory resources of a single computing entity. On the other hand, horizontal elasticity requires changing the architecture of the application to run on a distributed fleet of computing nodes that can grow and shrink according to the values of certain metrics, such as the average CPU usage across the available nodes.
 
 ## Instalation and use
-To run this code only is necesary copy software from this repository to running machine. It was executed in Python 3.5.2. No others versions are tested.
-Some python libreries are necesary to run Cobeats. 
+To run this code only is necesary copy software from this repository to running machine. It was executed in Python 3.5.2. No others versions are tested.  Some python libraries are necesary to run Cobeats.  
+
+localhost: /home/instalation_dir$ conda list -n desa
+# Name                    Version                   Build  Channel
+blas                      1.0                         mkl    anaconda
+ca-certificates           2019.1.23                     0    anaconda
+certifi                   2019.3.9                 py37_0    anaconda
+intel-openmp              2019.3                      199    anaconda
+libedit                   3.1.20181209         hc058e9b_0    anaconda
+libffi                    3.2.1                h4deb6c0_3    anaconda
+libgcc-ng                 8.2.0                hdf63c60_1    anaconda
+libgfortran-ng            7.3.0                hdf63c60_0    anaconda
+libstdcxx-ng              8.2.0                hdf63c60_1    anaconda
+mkl                       2019.3                      199    anaconda
+mkl_fft                   1.0.10           py37ha843d7b_0    anaconda
+mkl_random                1.0.2            py37hd81dba3_0    anaconda
+ncurses                   6.1                  he6710b0_1    anaconda
+numpy                     1.16.2           py37h7e9f1db_0    anaconda
+numpy-base                1.16.2           py37hde5b4d6_0    anaconda
+openssl                   1.1.1                h7b6447c_0    anaconda
+pandas                    0.24.2           py37he6710b0_0    anaconda
+patsy                     0.5.1                    py37_0    anaconda
+pip                       19.0.3                   py37_0    anaconda
+python                    3.7.3                h0371630_0    anaconda
+python-dateutil           2.8.0                    py37_0    anaconda
+pytz                      2018.9                   py37_0    anaconda
+readline                  7.0                  h7b6447c_5    anaconda
+scipy                     1.2.1            py37h7c811a0_0    anaconda
+setuptools                40.8.0                   py37_0    anaconda
+six                       1.12.0                   py37_0    anaconda
+sqlite                    3.27.2               h7b6447c_0    anaconda
+statsmodels               0.9.0            py37h035aef0_0    anaconda
+tk                        8.6.8                hbc83047_0    anaconda
+wheel                     0.33.1                   py37_0    anaconda
+xz                        5.2.4                h14c3975_4    anaconda
+zlib                      1.2.11               h7b6447c_3    anaconda
+
 
 * mathplotlib 2.2.3
 * numpy 1.15.1
