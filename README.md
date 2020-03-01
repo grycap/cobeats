@@ -21,7 +21,10 @@ It is included all information about loads needed for simulation.
 
 Change instalation diretory in bin/run_compare.sh in BASE variable for your instalation directory
 
-BASE=/full_instalation_directory
+     BASE=/full_instalation_directory
+
+A XWindows Server is need to output simulation graphs. Be sure a display is avalable running xeyes or xclock commands. We tested it using putty with X11forwarding option active and Xming Server.
+
 
 ## Basic execution example
 
