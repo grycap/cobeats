@@ -19,6 +19,10 @@ Some python libreries are necesary to run Cobeats.
 
 It is included all information about loads needed for simulation.
 
+Change instalation diretory in bin/run_compare.sh in BASE variable for your instalation directory
+
+BASE=/full_instalation_directory
+
 ## Basic execution example
 
 For basic execution run ./bin/run_compare.sh with options. First parameter is algorithm used and second one is load type.

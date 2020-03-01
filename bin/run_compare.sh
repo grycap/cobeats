@@ -1,12 +1,25 @@
 #!/bin/bash
 
-#####################################################################################
-#######     Cobeat launcher    
-#####################################################################################
+# run_compare.sh --  Cobeat launcher    
+# JHH - Cobeats -2020
+# Copyright (C) GRyCAP - I3M - UPV
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 
 #Change instalation directory for use 
-BASE=/home/ubuntu/Mytest/cobeats/scm/v0.2
+#BASE=/home/ubuntu/Mytest/cobeats/scm/v0.2
+BASE=/home/ubuntu/repo/cobeats
 
 help(){
      echo "$0 option Load"
@@ -51,35 +64,34 @@ case $2 in
 
 esac
 
-
-
-
-
 #ORIGEN=../iofiles/system_status_fifa_corto.csv
 #CONF=/home/ubuntu/Mytest/cobeats/scm/v0.2/conf/cell_fifa.cfg
 case $1 in
   C)
      echo "Conventional"
      conda activate desa
-     rm $BASE/iofiles/resultado1_compare_b.txt
-     $BASE/cobeats/run_simulation_compare.py $CONF $ORIGEN $BASE/iofiles/resultado1_compare_b.txt
-     $BASE/cobeats/plot1.1.py $BASE/iofiles/resultado1_compare_b.txt 1
+     FILE=$BASE/iofiles/resultado1_compare_b.txt
+     [ -e $FILE ] && rm $FILE 
+     $BASE/cobeats/run_simulation_compare.py $CONF $ORIGEN $FILE
+     $BASE/cobeats/plot1.1.py $FILE 1
      ;;
 
   B)
      echo "Bioinspirated"
      conda activate desa
-     rm $BASE/iofiles/resultado1.txt
-     $BASE/cobeats/run_simulation.py $CONF $ORIGEN $BASE/iofiles/resultado1.txt
-     $BASE/cobeats/plot1.1.py $BASE/iofiles/resultado1.txt 1
+     FILE=$BASE/iofiles/resultado1.txt
+     [ -e $FILE ] && rm $FILE 
+     $BASE/cobeats/run_simulation.py $CONF $ORIGEN $FILE
+     $BASE/cobeats/plot1.1.py $FILE 1
      ;;
  
   P)
      echo "Prediction"
      conda activate desa
-     rm $BASE/iofiles/resultado1_compare_b.txt
-     $BASE/cobeats/run_simulation_compare.py $CONF_PREV $ORIGEN $BASE/iofiles/resultado1_compare_b.txt
-     $BASE/cobeats/plot1.1.py ../iofiles/resultado1_compare_b.txt 1
+     FILE=$BASE/iofiles/resultado1_compare_b.txt
+     [ -e $FILE ] && rm $FILE 
+     $BASE/cobeats/run_simulation_compare.py $CONF_PREV $ORIGEN $FILE
+     $BASE/cobeats/plot1.1.py $FILE 1
      ;;
 
   *)
