@@ -26,7 +26,7 @@ help(){
      echo "   Option: C - Conventional"
      echo "           B - Bioinspired"
      echo "           P - Prediction"
-     echo "   Load: 1 - Sintetic load"
+     echo "   Load: 1 - Syntetic load"
      echo "         2 - FIFA load"
      echo "         3 - NASA load" 
      exit
@@ -40,7 +40,7 @@ fi
 
 case $2 in
    1)
-      echo "Option 1 - Sintetic load - "
+      echo "Option 1 - Syntetic load - "
       ORIGEN=$BASE/iofiles/system_status.csv
       CONF=$BASE/conf/cell_sint.cfg
       CONF_PREV=$BASE/conf/cell_sint_prev.cfg
